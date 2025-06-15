@@ -14,19 +14,12 @@ class NotificationController extends Controller
 //     public function index()
 // {
 //     $notifications = Notification::latest()->get();
-    
+
 //     // Ambil informasi pesanan user yang sedang login (menghindari Collection)
 //     $order = request()->user()->orders()->latest()->first() ?? null;
 
 //     return view('admin.notif.index', compact('notifications', 'order'));
 // }
-
-
-
-
-
-
-
 
 public function index()
 {
@@ -37,20 +30,6 @@ public function index()
 
     return view('admin.notif.index', compact('notifications', 'orders'));
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     // Tampilkan form tambah notifikasi
     public function create()
     {

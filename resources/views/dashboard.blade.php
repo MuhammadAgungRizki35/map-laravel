@@ -5,17 +5,28 @@
     <h3 class="h5 pt-2">PRODUK</h3>
     <div class="row">
         @foreach($images as $image)
-        <div class="col-md-3 mb-2">
-            <div class="catalog-item text-center" onclick="showProductModal('{{ asset('storage/'.$image->image_path) }}', '{{ $image->description }}', 'Rp{{ number_format($image->price,0,',','.') }}')"
-     style="cursor: pointer; background-color: #ffffff; padding: 10px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);">
-
+        <div class="col-6 col-md-3 mb-4">
+           <div class="catalog-item" onclick="showProductModal('{{ asset('storage/'.$image->image_path) }}', '{{ $image->description }}', 'Rp 14.000,00')"
+     style="cursor: pointer; background-color: #fff; padding: 12px; border-radius: 16px; box-shadow: 0 2px 10px rgba(0,0,0,0.15); transition: transform 0.2s ease-in-out;">
     <img src="{{ asset('storage/'.$image->image_path) }}"
-        style="width: 65%; height: 390px; object-fit: cover; border-radius: 5px;">
+        class="w-100" style="height: 180px; object-fit: cover; border-radius: 10px;">
 
-    <p class="mt-2 font-weight-bold" style="color: #000000;">{{ $image->description }}</p>
-    <p class="text-muted">Harga: Rp{{ number_format($image->price,0,',','.') }}</p>
-    {{-- <a href="#" class="btn btn-secondary btn-sm">Lihat</a> --}}
+   @php
+    $words = explode(' ', strip_tags($image->description));
+    $shortDescription = implode(' ', array_slice($words, 0, 7)) . (count($words) > 7 ? '...' : '');
+@endphp
+<div class="mt-2 text-start" style="color: #000000; font-size: 13px;">
+    {{ $shortDescription }}
 </div>
+
+
+   <div class="mt-1 fw-bold text-dark" style="font-size: 14px;">
+    Rp 14.000,00
+</div>
+
+
+</div>
+
 
 
         </div>
@@ -47,7 +58,7 @@
 <script>
     function showProductModal(image, description, price) {
         document.getElementById('modalImage').src = image;
-        document.getElementById('modalDescription').innerText = description;
+        document.getElementById('modalDescription').innerHTML = description.replace(/ - /g, '<br>');
         document.getElementById('modalPrice').innerText = price;
         var productModal = new bootstrap.Modal(document.getElementById('productModal'));
         productModal.show();

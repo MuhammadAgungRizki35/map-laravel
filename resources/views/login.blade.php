@@ -3,48 +3,63 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Login</title>
+        <title>Map Printing</title>
         <link rel="stylesheet" href="https://unpkg.com/bootstrap@5.3.2/dist/css/bootstrap.min.css">
         <link rel="stylesheet" href="{{ asset('css/glass.css') }}">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap" rel="stylesheet">
+
         <style>
             body {
                 background-color: #f8f9fa;
             }
             .card {
+                /* --bs-card-bg: rgb(255 255 255 / 15%); */
                 border-radius: 10px;
                 box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
             }
+
+            h1, h2, h3, h4, h5, h6 {
+    font-family: 'Montserrat', sans-serif;
+}
+
+
             .form-control {
                 border: none;
-                border-bottom: 2px solid #D4AF37; /* Warna emas */
+                background: #f8f9fa;
                 border-radius: 0;
                 padding-left: 5px;
-                background-color: transparent;
+                /* background-color: transparent; */
                 box-shadow: none;
             }
             .form-control:focus {
-                border-bottom: 2px solid #C9A02D;
+                box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
                 box-shadow: none;
                 outline: none;
             }
             .btn-primary {
-                background-color: #D4AF37;
-                border-color: #D4AF37;
-                font-weight: bold;
+                background: rgb(47 0 224 / 64%);
+                box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
                 border-radius: 25px;
             }
             .btn-primary:hover {
-                background-color: #C9A02D;
-                border-color: #C9A02D;
+                background: #667ce8;
+                box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
             }
             h4 {
                 font-weight: bold;
                 text-align: center;
+
             }
             .form-floating > label {
                 left: 5px;
                 font-size: 0.9rem;
                 color: #6c757d;
+            }
+            .tittle {
+                font-weight: bold;
+                text-align: center;
+                margin-bottom: 20px;
+                box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
             }
         </style>
     </head>
@@ -63,9 +78,11 @@
                                         @if(Session::has('error'))
                                             <div class="alert alert-danger">{{ Session::get('error') }}</div>
                                         @endif
-                                        <div class="mb-4">
-                                            <h4>Login</h4>
-                                        </div>
+                                     <div class="mb-4 text-center">
+    <h1 style="font-family: 'Montserrat', sans-serif;">Map Printing</h1>
+</div>
+
+
                                     </div>
                                 </div>
                                 <form action="{{ route('account.authenticate') }}" method="post">
@@ -73,8 +90,8 @@
                                     <div class="row gy-3">
                                         <div class="col-12">
                                             <div class="form-floating">
-                                                <input type="text" value="{{ old('email') }}" class="form-control @error('email') is-invalid @enderror" name="email" id="email" placeholder="Username">
-                                                <label for="email">Username</label>
+                                                <input type="text" value="{{ old('email') }}" class="form-control @error('email') is-invalid @enderror" name="email" id="email" placeholder="Email">
+                                                <label for="email">Alamat Email</label>
                                                 @error('email')
                                                     <p class="invalid-feedback">{{ $message }}</p>
                                                 @enderror
@@ -83,7 +100,7 @@
                                         <div class="col-12">
                                             <div class="form-floating">
                                                 <input type="password" class="form-control @error('password') is-invalid @enderror" name="password" id="password" placeholder="Password">
-                                                <label for="password">Password</label>
+                                                <label for="password">Kata Sandi</label>
                                                 @error('password')
                                                     <p class="invalid-feedback">{{ $message }}</p>
                                                 @enderror
@@ -91,7 +108,7 @@
                                         </div>
                                         <div class="col-12">
                                             <div class="d-grid">
-                                                <button class="btn btn-primary py-3" type="submit">LOGIN</button>
+                                                <button class="btn btn-primary py-3" type="submit">MASUK</button>
                                             </div>
                                         </div>
                                     </div>
@@ -100,7 +117,7 @@
                                     <div class="col-12">
                                         <hr class="mt-4 mb-3 border-secondary-subtle">
                                         <div class="d-flex justify-content-center">
-                                            <a href="{{ route('account.register') }}" class="text-decoration-none" style="color: #D4AF37;">Create new account</a>
+                                            <a href="{{ route('account.register') }}" class="text-decoration-none" style="color: #primary;">Buat akun baru</a>
                                         </div>
                                     </div>
                                 </div>

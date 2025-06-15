@@ -13,7 +13,7 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->integer('jumlah_pcs');
             $table->integer('jumlah_plastik');
-            $table->string('file_pdf');
+            $table->string('file_word'); // ubah dari file_pdf ke file_word
             $table->timestamps();
         });
     }

@@ -1,0 +1,9 @@
+.custom-orange {
+    background-color: #ff7f50;
+    color: white;
+    border: none;
+}
+
+.custom-orange:hover {
+    background-color: #e76e40;
+}

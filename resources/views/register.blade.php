@@ -103,7 +103,7 @@
                                         </div>
                                         <div class="col-12">
                                             <div class="d-grid">
-                                                <button class="btn btn-primary py-3" type="submit">Register Now</button>
+                                                <button class="btn btn-primary py-3" type="submit">Daftar sekarang</button>
                                             </div>
                                         </div>
                                     </div>
@@ -112,7 +112,7 @@
                                     <div class="col-12">
                                         <hr class="mt-4 mb-3 border-secondary-subtle">
                                         <div class="d-flex justify-content-center">
-                                            <a href="{{ route('account.login') }}" class="text-decoration-none" style="color: #D4AF37;">Click here to login</a>
+                                            <a href="{{ route('account.login') }}" class="text-decoration-none" style="color: #D4AF37;">Klik di sini untuk masuk</a>
                                         </div>
                                     </div>
                                 </div>

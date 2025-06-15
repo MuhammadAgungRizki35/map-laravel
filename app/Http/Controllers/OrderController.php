@@ -13,7 +13,6 @@ class OrderController extends Controller
         $user = Auth::user();
         $orders = $user->orders;
 
-        // Harga per jumlah lembar
         $hargaList = [
             0 => 14000, 4 => 16500, 6 => 18000, 8 => 19500,
             10 => 21000, 12 => 22500, 14 => 24000, 16 => 25500,
@@ -29,12 +28,11 @@ class OrderController extends Controller
         $request->validate([
             'jumlah_pcs' => 'required|integer|min:1',
             'jumlah_plastik' => 'required|integer|min:0',
-            'file_pdf' => 'required|mimes:pdf|max:2048',
+            'file_word' => 'required|mimes:doc,docx|max:5120', // validasi Word
         ]);
 
         $user = Auth::user();
 
-        // Daftar harga
         $hargaList = [
             0 => 14000, 4 => 16500, 6 => 18000, 8 => 19500,
             10 => 21000, 12 => 22500, 14 => 24000, 16 => 25500,
@@ -45,20 +43,20 @@ class OrderController extends Controller
         $jumlahPlastik = $request->jumlah_plastik;
         $jumlahPcs = $request->jumlah_pcs;
 
-        // Hitung total harga berdasarkan jumlah plastik dan pcs
         $hargaPerPcs = $hargaList[$jumlahPlastik] ?? 0;
         $totalHarga = $hargaPerPcs * $jumlahPcs;
 
-        $filePath = $request->file('file_pdf')->store('order', 'public');
+        $filePath = $request->file('file_word')->store('order', 'public');
 
         Order::create([
             'user_id' => $user->id,
             'jumlah_pcs' => $jumlahPcs,
             'jumlah_plastik' => $jumlahPlastik,
-            'total_harga' => $totalHarga,
-            'file_pdf' => $filePath,
+            'file_word' => $filePath, // simpan file word
         ]);
 
-        return redirect()->route('account.memesan.index')->with('success', 'Pemesanan berhasil!');
+        return redirect()->route('account.memesan.index')
+            ->with('success', 'Pemesanan berhasil!')
+            ->with('show_receipt', true);
     }
 }

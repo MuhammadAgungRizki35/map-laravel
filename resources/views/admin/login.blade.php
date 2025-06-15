@@ -8,28 +8,28 @@
         <style>
             /* Mengubah warna tombol menjadi kuning */
             .btn-custom {
-                background-color: #D4AF37 !important;
-                border-color: #D4AF37 !important;
+                background-color: #000000 !important;
+                border-color: #000000 !important;
                 color: white !important;
             }
-            
+
             .btn-custom:hover {
-                background-color: #C9A030 !important; /* Sedikit lebih gelap saat hover */
-                border-color: #C9A030 !important;
+                background-color: #000000 !important; /* Sedikit lebih gelap saat hover */
+                border-color: #000000 !important;
             }
-            
-            .btn-custom:focus, 
+
+            .btn-custom:focus,
             .btn-custom:active {
-                background-color: #B8912A !important;
-                border-color: #B8912A !important;
-                box-shadow: 0 0 5px #D4AF37 !important;
+                background-color: #000000 !important;
+                border-color: #000000 !important;
+                box-shadow: 0 0 5px #000000 !important;
             }
 
             .form-control:focus {
-                border-color: #D4AF37 !important;
-                box-shadow: 0 0 5px #D4AF37 !important;
+                border-color: #000000 !important;
+                box-shadow: 0 0 5px #000000 !important;
             }
-            
+
         </style>
     </head>
     <body class="d-flex justify-content-center align-items-center vh-100 bg-light">
@@ -38,7 +38,7 @@
             <form action="{{ route('admin.authenticate') }}" method="post">
                 @csrf
                 <div class="mb-3">
-                    <input type="text" value="{{ old('email') }}" class="form-control border-0 border-bottom @error('email') is-invalid @enderror" name="email" id="email" placeholder="Username">
+                    <input type="text" value="{{ old('email') }}" class="form-control border-0 border-bottom @error('email') is-invalid @enderror" name="email" id="email" placeholder="Email">
                     @error('email')<p class="text-danger small">{{ $message }}</p>@enderror
                 </div>
                 <div class="mb-4">
